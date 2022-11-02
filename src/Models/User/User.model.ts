@@ -6,7 +6,7 @@ modelOptions({
         timestamps: true
     }
 })
-
+ 
 // Schema
 class User{
     @prop({
