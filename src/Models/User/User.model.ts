@@ -1,12 +1,5 @@
-import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 
-// timestamps
-modelOptions({
-    schemaOptions:{
-        timestamps: true
-    }
-})
- 
 // Schema
 class User{
     @prop({
@@ -25,7 +18,7 @@ class User{
         type: String, 
         required: true
     })
-    usernamename: string;
+    username: string;
     
     @prop({
         type: String, 
@@ -62,7 +55,11 @@ class User{
         default: []
     })
     followings: Array<string>;
+
+    @prop()
+    token: string;
+
 }
 
-const UserModel = getModelForClass(User);
+const UserModel = getModelForClass(User,  { schemaOptions: { timestamps: true } });
 export default UserModel;
