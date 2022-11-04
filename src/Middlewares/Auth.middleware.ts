@@ -1,8 +1,8 @@
 import { verify } from "jsonwebtoken";
-import RequestAuthintication from "../../Types/TokenHandel";
+import RequestAuthintication from "../Types/TokenHandel";
 import { Response, NextFunction } from "express";
-import UserModel from "../../Models/User/User.model";
-import UserID from "../../Types/userId";
+import UserModel from "../Models/User/User.model";
+import UserID from "../Types/userId";
 
 const verifyToken = async (req: RequestAuthintication | any, res: Response, next: NextFunction) => {
     const token = req.body.token || req.headers['token'];

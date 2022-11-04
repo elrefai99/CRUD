@@ -25,3 +25,5 @@ pnpm dev
 ```bash
 pnpm test
 ```
+
+### You will also see any lint errors in the console.

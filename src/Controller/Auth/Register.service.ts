@@ -28,6 +28,6 @@ export const RegisterController = async (req: Request, res: Response, next: Next
         }
         
     }catch(err){
-        res.status(200).json({message: err})
+        res.status(500).json({message: err})
     }
 }
