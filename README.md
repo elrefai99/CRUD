@@ -1,4 +1,4 @@
-# Social Media TypeScript
+# Social Media 
 -----------
 
 ## Description
@@ -10,19 +10,19 @@
 ## Installation
 
 ```bash
-pnpm i
+npm i
 ```
 
 ## Running
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 ## Testing
 
 ```bash
-pnpm test
+npm test
 ```
 
 ### You will also see any lint errors in the console.
