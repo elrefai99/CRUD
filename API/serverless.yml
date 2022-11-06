@@ -6,9 +6,9 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  hello:
-    handler: handler.hello
+  handler:
+    handler: handler.handler
     events:
-      - httpApi:
+      - http:
           path: /
           method: get
