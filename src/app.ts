@@ -4,15 +4,17 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
+import { ControllerInterFaces } from './Types/Controller/Controller';
 
 export class App {
     public app: Application;
 
-    constructor(){
+    constructor(controller: ControllerInterFaces[]){
         this.app = express();
 
         // Setup
         this.initializeSetUps()
+        this.controllerHanedl(controller)
     }
 
     // Setup
@@ -25,6 +27,11 @@ export class App {
         this.app.use(cookieParser())
     }
 
+    private controllerHanedl(controller: ControllerInterFaces[]){
+        controller.forEach((controllers) => {
+            this.app.use('/', controllers.router);
+        });
+    }
 
     public listen(){
         const port = process.env.PORT || 1999;
