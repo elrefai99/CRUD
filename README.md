@@ -4,6 +4,13 @@
 ## Description
 
 1) use Typegoose as MongoDB Schema
+        like: 
+              ```ts
+                class user{
+                  @prop({type: String, required: true}) // MongoDB Types
+                  Username: string // Typescript interface
+                }
+              ```
 
 ## Installation
 
