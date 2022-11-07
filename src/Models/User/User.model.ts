@@ -1,10 +1,6 @@
-import {prop, modelOptions, Ref, getModelForClass} from '@typegoose/typegoose';
+import {prop, Ref, getModelForClass} from '@typegoose/typegoose';
+import mongoose from 'mongoose';
 
-modelOptions({
-    schemaOptions: {
-        timestamps: true,
-    }
-})
 
 class Adderss {
     @prop({required: true})
@@ -39,13 +35,13 @@ export class User{
     @prop({required: true, default: ""})
     public coverPic: string;
 
-    @prop({type: Array, default: []})
+    @prop({type: mongoose.Schema.Types.String,  default: [""]})
     public followers: Array<string>;
 
-    @prop({type: Array, default: []})
+    @prop({type:  mongoose.Schema.Types.String, default: [""]})
     public followings: Array<string>;
 
-    @prop({type: String, max: 120})
+    @prop()
     public desc: string;
 
     @prop({ref: () => Adderss})
@@ -55,4 +51,4 @@ export class User{
     public token: string;
 }
 
-export const UserModel = getModelForClass(User)
+export const UserModel = getModelForClass(User, { schemaOptions: { timestamps: true } })
