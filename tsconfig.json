@@ -13,6 +13,11 @@
     "noUnusedLocals": true,                           /* Enable error reporting when a local variables aren't read. */
     "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read */
     "noImplicitReturns": true,                        /* Enable error reporting for codepaths that do not explicitly return in a function. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,                              /* Skip type checking all .d.ts files. */
+    
+    // Typegoose Handeless
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
