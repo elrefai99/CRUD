@@ -1,28 +1,26 @@
-# Social Media 
+# Social Media TypeScript
 -----------
 
 ## Description
 
-1) use AWS Lambda ⁁
-2) Use Vue as Front End
-3) Node.js as Backend
+1) use Typegoose as MongoDB Schema
 
 ## Installation
 
 ```bash
-npm i
+pnpm i
 ```
 
 ## Running
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ## Testing
 
 ```bash
-npm test
+pnpm test
 ```
 
 ### You will also see any lint errors in the console.
