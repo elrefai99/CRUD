@@ -1,8 +1,6 @@
-// import { DataStoreinTokens } from './../Types/Auth/DataStoredTokens.d';
 // import bcrypt from 'bcrypt'
 // import jwt from 'jsonwebtoken'
 import { UserModel } from '../Models/User/User.model'
-// import {User} from '../Types/Auth/RequestUser';
 import { Request, Response, NextFunction } from 'express';
 
 class AuthenticationService {
@@ -10,7 +8,13 @@ class AuthenticationService {
 
     public async RegisterController (req: Request, res: Response, next: NextFunction) {
         try{
-            res.status(200).json(req.body)
+            const data = req.body;
+
+            const username = req.body.firstName + '_' + req.body.lastName
+            data.username = username
+            const User = new UserModel(data)
+            await User.save()
+            res.status(200).json({message: 'Success Data Saved'})
             next()
         }catch(err){
             res.status(500).json({message: err})

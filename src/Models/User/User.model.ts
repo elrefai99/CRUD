@@ -29,10 +29,10 @@ export class User{
     @prop()
     public password: string;
 
-    @prop({ required: true, default: "https://firebasestorage.googleapis.com/v0/b/animeview-60d78.appspot.com/o/user.jpeg?alt=media&token=2b11e16f-41a6-435d-afdc-f7f68615d2f7"})
+    @prop({ default: "https://firebasestorage.googleapis.com/v0/b/animeview-60d78.appspot.com/o/user.jpeg?alt=media&token=2b11e16f-41a6-435d-afdc-f7f68615d2f7"})
     public profilePic: string;
 
-    @prop({required: true, default: ""})
+    @prop({ default: ""})
     public coverPic: string;
 
     @prop({type: mongoose.Schema.Types.String,  default: [""]})
@@ -44,8 +44,8 @@ export class User{
     @prop()
     public desc: string;
 
-    @prop({ref: () => Adderss})
-    public address: Ref<Adderss>
+    @prop({type: () => [Adderss]})
+    public address?: Ref<Adderss>
 
     @prop({type: String})
     public token: string;
