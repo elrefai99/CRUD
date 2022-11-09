@@ -54,7 +54,7 @@ class AuthenticationService {
             if(getEmail && validPassword){
 
                 // Create Token
-                const token = TokenUserIDCookies(getEmail._id);
+                const token = TokenUserIDCookies(getEmail.id);
 
                 getEmail.token = token
                 res.status(200).json({getEmail})

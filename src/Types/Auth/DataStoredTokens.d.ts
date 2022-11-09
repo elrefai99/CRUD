@@ -1,3 +1,3 @@
 export interface DataStoreinTokens{
-    _id: string;
+    id: string;
 }

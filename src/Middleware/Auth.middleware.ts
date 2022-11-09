@@ -12,7 +12,7 @@ const verifyToken = async (req: RequestUser | any, res: Response, next: NextFunc
             const secret_token = process.env.TokenSecret as string;
 
             const user_id = await jwt.verify(token, secret_token) as DataStoreinTokens;
-            const id = user_id?._id;
+            const id = user_id?.id;
 
             const user = await UserModel.findById(id);
             if(user){
