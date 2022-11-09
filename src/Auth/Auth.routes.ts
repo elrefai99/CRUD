@@ -13,5 +13,6 @@ export class AuthenticationRouter implements ControllerInterFaces{
     private initializeRoutes(){
         // Regsiter
         this.router.post(`${this.path}/regsiter`, this.authService.RegisterController)
+        this.router.post(`${this.path}/login`, this.authService.LoginController)
     }
 }

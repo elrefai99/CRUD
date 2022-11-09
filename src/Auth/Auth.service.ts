@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { UserModel } from '../Models/User/User.model'
 import { Request, Response, NextFunction } from 'express';
-import { MaxAge } from '../Functions/JWT/jwt.function';
+import { MaxAge, TokenUserIDCookies } from '../Functions/JWT/jwt.function';
 import { UserEmailAlreadyUsed } from '../Errors/403/User/email.error';
 
 class AuthenticationService {
@@ -38,6 +38,28 @@ class AuthenticationService {
                 res.status(200).json({code: 200, status: "Success", message: 'Success Data Saved, Welcome With US 🤗'})
                 next()
             }
+        }catch(err){
+            res.status(500).json({message: err})
+        }
+    }
+
+    public async LoginController (req: Request, res: Response, next: NextFunction) {
+        try{
+            const getEmail = await UserModel.findOne({email: req.body.email})
+            if(!getEmail) res.status(400).json("email not found")
+
+            const validPassword = await bcrypt.compare(req.body.password, getEmail!.password);
+            if(!validPassword) res.status(400).json('wrong Password')
+
+            if(getEmail && validPassword){
+
+                // Create Token
+                const token = TokenUserIDCookies(getEmail._id);
+
+                getEmail.token = token
+                res.status(200).json({getEmail})
+            }
+            next()
         }catch(err){
             res.status(500).json({message: err})
         }
