@@ -9,4 +9,6 @@ const app = new App([
     new AuthenticationRouter(),
 ]);
 
+app.ErrorRequest404()
+
 app.listen()

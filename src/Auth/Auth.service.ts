@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import { UserModel } from '../Models/User/User.model'
 import { Request, Response, NextFunction } from 'express';
 import { MaxAge } from '../Functions/JWT/jwt.function';
+import { UserEmailAlreadyUsed } from '../Errors/403/User/email.error';
 
 class AuthenticationService {
     public user = UserModel;
@@ -23,7 +24,7 @@ class AuthenticationService {
             // Handle Email
             const find_Email = await UserModel.findOne({email: req.body.email})
             if(find_Email){
-                res.status(403).json({code: 403, status: "Failed", message:"Email is used"})
+                next(new UserEmailAlreadyUsed())
             }else{
                 // Add To DataBase
                 const user = await new UserModel(data)

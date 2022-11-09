@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import { ControllerInterFaces } from './Types/Controller/Controller';
+import errorMiddleware from './Middleware/error.middleware';
+import { Request404Error } from './Errors/404/404.error';
 
 export class App {
     public app: Application;
@@ -15,6 +17,7 @@ export class App {
         // Setup
         this.initializeSetUps()
         this.controllerHanedl(controller)
+        this.ErrorRequest404()
     }
 
     // Setup
@@ -25,6 +28,7 @@ export class App {
         this.app.use(helmet())
         this.app.use(cors())
         this.app.use(cookieParser())
+        this.app.use(errorMiddleware)
     }
 
     private controllerHanedl(controller: ControllerInterFaces[]){
@@ -44,5 +48,11 @@ export class App {
     }
     public getServer() {
         return this.app;
+    }
+
+    public ErrorRequest404(){
+        this.app.get("*", (_req, res) => {
+            res.json(new Request404Error())
+        })
     }
 }
