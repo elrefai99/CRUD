@@ -14,5 +14,10 @@ export class UserRoutes implements ControllerInterFaces {
     }
     private initializeRoutes(){
         this.router.get(`${this.path}/`, verifyToken, this.userController.getUserAccount)
+        this.router.get(`${this.path}/system/update`, verifyToken, this.userController.UpdateUserController)
+        this.router.get(`${this.path}/system/delet`, verifyToken, this.userController.DeleteUserController)
+        this.router.get(`${this.path}/system/follow`, verifyToken, this.userController.FollowUserController)
+        this.router.get(`${this.path}/system/unfollow`, verifyToken, this.userController.UnFollowUserController)
+
     }
 }
