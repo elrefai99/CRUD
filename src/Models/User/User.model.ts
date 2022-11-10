@@ -51,4 +51,8 @@ export class User{
     public token: string;
 }
 
-export const UserModel = getModelForClass(User, { schemaOptions: { timestamps: true } })
+export const UserModel = getModelForClass(User, { 
+    schemaOptions: { 
+        timestamps: true 
+    } 
+})
