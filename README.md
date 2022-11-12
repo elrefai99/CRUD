@@ -1,4 +1,4 @@
-# Social Media TypeScript
+# CRUD TypeScript
 -----------
 
 ## Description
